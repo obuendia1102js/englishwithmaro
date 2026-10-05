@@ -16,7 +16,7 @@
     <section v-if="currentTab === 'menu'" class="flex-grow flex flex-col justify-center pb-10">
       <div class="text-center space-y-3 mb-6">
         <p class="text-slate-600 text-lg max-w-xl mx-auto">
-          Vamos a conocer a los animales de granja y domésticos. ¿Qué quieres hacer primero?
+          Vamos a conocer a los animales de granja, domésticos y de la selva. ¿Qué quieres hacer primero?
         </p>
       </div>
 
@@ -159,7 +159,22 @@ const animalsData = [
   { id: "Calf", eng: "Calf", spa: "Ternero", emoji: "🐮", color: "from-slate-300 to-slate-500", desc: "Una vaca bebé." },
   { id: "Piglet", eng: "Piglet", spa: "Cerdito", emoji: "🐷", color: "from-pink-300 to-pink-500", desc: "Un cerdo bebé." },
   { id: "Foal", eng: "Foal", spa: "Potrillo", emoji: "🐴", color: "from-amber-500 to-amber-700", desc: "Un caballo bebé." },
-  { id: "Chick", eng: "Chick", spa: "Pollito", emoji: "🐥", color: "from-yellow-400 to-yellow-600", desc: "El bebé de la gallina." }
+  { id: "Chick", eng: "Chick", spa: "Pollito", emoji: "🐥", color: "from-yellow-400 to-yellow-600", desc: "El bebé de la gallina." },
+  // Animales de la selva y salvajes
+  { id: "Lion", eng: "Lion", spa: "León", emoji: "🦁", color: "from-amber-500 to-orange-600", desc: "El rey de la selva." },
+  { id: "Tiger", eng: "Tiger", spa: "Tigre", emoji: "🐯", color: "from-orange-500 to-orange-700", desc: "Un felino grande con rayas." },
+  { id: "Elephant", eng: "Elephant", spa: "Elephant", emoji: "🐘", color: "from-slate-400 to-slate-600", desc: "Tiene una trompa muy larga." },
+  { id: "Monkey", eng: "Monkey", spa: "Mono", emoji: "🐵", color: "from-amber-700 to-amber-900", desc: "Le encanta comer plátanos." },
+  { id: "Gorilla", eng: "Gorilla", spa: "Gorila", emoji: "🦍", color: "from-stone-600 to-stone-800", desc: "Muy grande y fuerte." },
+  { id: "Snake", eng: "Snake", spa: "Serpiente", emoji: "🐍", color: "from-emerald-500 to-emerald-700", desc: "Se arrastra por el suelo." },
+  { id: "Crocodile", eng: "Crocodile", spa: "Cocodrilo", emoji: "🐊", color: "from-green-600 to-green-800", desc: "Tiene dientes muy grandes." },
+  { id: "Zebra", eng: "Zebra", spa: "Cebra", emoji: "🦓", color: "from-slate-700 to-slate-900", desc: "Parece un caballo con rayas blancas y negras." },
+  { id: "Giraffe", eng: "Giraffe", spa: "Jirafa", emoji: "🦒", color: "from-yellow-500 to-orange-500", desc: "Tiene el cuello muy largo." },
+  { id: "Hippo", eng: "Hippo", spa: "Hipopótamo", emoji: "🦛", color: "from-slate-400 to-indigo-400", desc: "Le gusta estar en el agua todo el día." },
+  { id: "Rhino", eng: "Rhino", spa: "Rinoceronte", emoji: "🦏", color: "from-stone-400 to-stone-600", desc: "Tiene un cuerno en la nariz." },
+  { id: "Bear", eng: "Bear", spa: "Oso", emoji: "🐻", color: "from-amber-800 to-amber-950", desc: "Le gusta mucho la miel." },
+  { id: "Panda", eng: "Panda", spa: "Panda", emoji: "🐼", color: "from-slate-800 to-black", desc: "Un oso blanco y negro que come bambú." },
+  { id: "Koala", eng: "Koala", spa: "Koala", emoji: "🐨", color: "from-slate-400 to-slate-500", desc: "Duerme abrazado a los árboles." }
 ]
 
 const quizDatabase = [
@@ -172,7 +187,12 @@ const quizDatabase = [
   { emoji: "🐔", sentence: "The ___ lays eggs.", translation: "La gallina pone huevos.", options: ["Chicken", "Cow", "Pig", "Donkey"], correct: "Chicken" },
   { emoji: "🦆", sentence: "The ___ is in the water.", translation: "El pato está en el agua.", options: ["Duck", "Goat", "Cat", "Turkey"], correct: "Duck" },
   { emoji: "🐰", sentence: "The ___ eats a carrot.", translation: "El conejo come una zanahoria.", options: ["Bird", "Rabbit", "Mouse", "Hamster"], correct: "Rabbit" },
-  { emoji: "🐭", sentence: "A small ___.", translation: "Un pequeño ratón.", options: ["Mouse", "Cow", "Horse", "Pig"], correct: "Mouse" }
+  { emoji: "🐭", sentence: "A small ___.", translation: "Un pequeño ratón.", options: ["Mouse", "Cow", "Horse", "Pig"], correct: "Mouse" },
+  { emoji: "🦁", sentence: "The ___ roars loudly.", translation: "El león ruge fuerte.", options: ["Lion", "Tiger", "Cat", "Monkey"], correct: "Lion" },
+  { emoji: "🐘", sentence: "The ___ has a long trunk.", translation: "El elefante tiene una trompa larga.", options: ["Hippo", "Rhino", "Elephant", "Giraffe"], correct: "Elephant" },
+  { emoji: "🐵", sentence: "The ___ loves bananas.", translation: "El mono ama los plátanos.", options: ["Monkey", "Gorilla", "Bear", "Dog"], correct: "Monkey" },
+  { emoji: "🦒", sentence: "The ___ is very tall.", translation: "La jirafa es muy alta.", options: ["Horse", "Giraffe", "Zebra", "Lion"], correct: "Giraffe" },
+  { emoji: "🐻", sentence: "The ___ eats honey.", translation: "El oso come miel.", options: ["Bear", "Panda", "Lion", "Tiger"], correct: "Bear" }
 ]
 
 const flipCard = (id) => {

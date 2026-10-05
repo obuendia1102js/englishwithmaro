@@ -14,11 +14,11 @@
       <!-- Tema 1: Animales -->
       <router-link to="/topic/animals" class="group relative overflow-hidden rounded-3xl bg-white border-2 border-slate-100 hover:border-emerald-500 p-6 text-left transition-all hover:shadow-2xl hover:shadow-emerald-500/20 hover:-translate-y-1 flex flex-col items-start gap-4">
         <div class="w-16 h-16 rounded-2xl bg-emerald-100 text-emerald-600 flex items-center justify-center text-3xl shrink-0 group-hover:scale-110 transition-transform">
-          🐶
+          🦁
         </div>
         <div class="flex-grow">
-          <h3 class="font-fredoka text-xl font-bold text-slate-800 mb-1">1. Animales de la Granja y Domésticos</h3>
-          <p class="text-slate-500 font-medium text-sm mb-3">Perros, vacas, gatos... ¡Vamos a conocerlos a todos!</p>
+          <h3 class="font-fredoka text-xl font-bold text-slate-800 mb-1">1. Animales (Granja, Domésticos y Selva)</h3>
+          <p class="text-slate-500 font-medium text-sm mb-3">Perros, leones, elefantes... ¡Vamos a conocerlos a todos!</p>
         </div>
         <div class="font-bold text-emerald-600 text-sm flex items-center gap-2 group-hover:translate-x-1 transition-transform mt-auto">
           Practicar <i class="fa-solid fa-arrow-right"></i>
