@@ -26,6 +26,11 @@ const router = createRouter({
       component: () => import('../views/FoodColorsView.vue')
     },
     {
+      path: '/topic/objects',
+      name: 'topic-objects',
+      component: () => import('../views/ObjectsView.vue')
+    },
+    {
       path: '/topic/pronouns',
       name: 'topic-pronouns',
       component: () => import('../views/PronounsView.vue')

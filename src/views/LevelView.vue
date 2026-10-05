@@ -9,7 +9,7 @@
       </h2>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 gap-6 w-full">
       
       <!-- Tema 1: Animales -->
       <router-link to="/topic/animals" class="group relative overflow-hidden rounded-3xl bg-white border-2 border-slate-100 hover:border-emerald-500 p-6 text-left transition-all hover:shadow-2xl hover:shadow-emerald-500/20 hover:-translate-y-1 flex flex-col items-start gap-4">
@@ -39,13 +39,27 @@
         </div>
       </router-link>
 
-      <!-- Tema 3: Pronombres -->
+      <!-- Tema 3: Objetos del Día a Día -->
+      <router-link to="/topic/objects" class="group relative overflow-hidden rounded-3xl bg-white border-2 border-slate-100 hover:border-amber-500 p-6 text-left transition-all hover:shadow-2xl hover:shadow-amber-500/20 hover:-translate-y-1 flex flex-col items-start gap-4">
+        <div class="w-16 h-16 rounded-2xl bg-amber-100 text-amber-500 flex items-center justify-center text-3xl shrink-0 group-hover:scale-110 transition-transform">
+          🎒
+        </div>
+        <div class="flex-grow">
+          <h3 class="font-fredoka text-xl font-bold text-slate-800 mb-1">3. Objetos del Día a Día</h3>
+          <p class="text-slate-500 font-medium text-sm mb-3">Cosas de la casa, la escuela y la calle.</p>
+        </div>
+        <div class="font-bold text-amber-500 text-sm flex items-center gap-2 group-hover:translate-x-1 transition-transform mt-auto">
+          Practicar <i class="fa-solid fa-arrow-right"></i>
+        </div>
+      </router-link>
+
+      <!-- Tema 4: Pronombres -->
       <router-link to="/topic/pronouns" class="group relative overflow-hidden rounded-3xl bg-white border-2 border-slate-100 hover:border-primary p-6 text-left transition-all hover:shadow-2xl hover:shadow-primary/20 hover:-translate-y-1 flex flex-col items-start gap-4">
         <div class="w-16 h-16 rounded-2xl bg-primary/10 text-primary flex items-center justify-center text-3xl shrink-0 group-hover:scale-110 transition-transform">
           👦🏽
         </div>
         <div class="flex-grow">
-          <h3 class="font-fredoka text-xl font-bold text-slate-800 mb-1">3. Pronombres Personales</h3>
+          <h3 class="font-fredoka text-xl font-bold text-slate-800 mb-1">4. Pronombres Personales</h3>
           <p class="text-slate-500 font-medium text-sm mb-3">I, You, He, She, It, We, They. ¡Aprende a identificarlos!</p>
         </div>
         <div class="font-bold text-primary text-sm flex items-center gap-2 group-hover:translate-x-1 transition-transform mt-auto">
