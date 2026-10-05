@@ -31,10 +31,13 @@
   <main class="max-w-5xl mx-auto w-full px-4 py-6 flex-grow flex flex-col relative">
     <router-view />
   </main>
+  
+  <CaymanMascot />
 </template>
 
 <script setup>
 import { useProgressStore } from './stores/progress'
+import CaymanMascot from './components/CaymanMascot.vue'
 
 const progressStore = useProgressStore()
 </script>

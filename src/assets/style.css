@@ -6,6 +6,14 @@
   --color-maro-accent: #C3E2C2;
   --color-maro-bg: #FDF7E4;
   --color-maro-text: #4A4A4A;
+  
+  /* Semantic colors used in views */
+  --color-primary: #4f46e5;
+  --color-info: #0ea5e9;
+  --color-success: #10b981;
+  --color-warning: #f59e0b;
+  --color-danger: #ef4444;
+
   --font-fredoka: "Fredoka", sans-serif;
   --font-nunito: "Nunito", sans-serif;
 }
