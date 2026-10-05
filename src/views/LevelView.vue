@@ -26,18 +26,18 @@
       </router-link>
 
       <!-- Tema 2: Comida y Colores -->
-      <div class="opacity-60 cursor-not-allowed group relative overflow-hidden rounded-3xl bg-slate-50 border-2 border-slate-200 p-6 flex flex-col items-start gap-4">
-        <div class="w-16 h-16 rounded-2xl bg-slate-200 text-slate-500 flex items-center justify-center text-3xl shrink-0">
+      <router-link to="/topic/food-colors" class="group relative overflow-hidden rounded-3xl bg-white border-2 border-slate-100 hover:border-rose-500 p-6 text-left transition-all hover:shadow-2xl hover:shadow-rose-500/20 hover:-translate-y-1 flex flex-col items-start gap-4">
+        <div class="w-16 h-16 rounded-2xl bg-rose-100 text-rose-500 flex items-center justify-center text-3xl shrink-0 group-hover:scale-110 transition-transform">
           🍎
         </div>
         <div class="flex-grow">
-          <h3 class="font-fredoka text-xl font-bold text-slate-500 mb-1">2. Comida y Colores</h3>
-          <p class="text-slate-400 font-medium text-sm mb-3">Vocabulario básico sobre tus alimentos y colores favoritos.</p>
+          <h3 class="font-fredoka text-xl font-bold text-slate-800 mb-1">2. Comida y Colores</h3>
+          <p class="text-slate-500 font-medium text-sm mb-3">Frutas, verduras, platos deliciosos y muchos colores.</p>
         </div>
-        <div class="font-bold text-slate-400 text-sm flex items-center gap-2 mt-auto">
-          <i class="fa-solid fa-lock"></i> Próximamente
+        <div class="font-bold text-rose-500 text-sm flex items-center gap-2 group-hover:translate-x-1 transition-transform mt-auto">
+          Practicar <i class="fa-solid fa-arrow-right"></i>
         </div>
-      </div>
+      </router-link>
 
       <!-- Tema 3: Pronombres -->
       <router-link to="/topic/pronouns" class="group relative overflow-hidden rounded-3xl bg-white border-2 border-slate-100 hover:border-primary p-6 text-left transition-all hover:shadow-2xl hover:shadow-primary/20 hover:-translate-y-1 flex flex-col items-start gap-4">
