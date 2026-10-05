@@ -1,42 +1,19 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
-@layer base {
-  body { font-family: 'Nunito', sans-serif; }
-  h1, h2, h3, h4, .font-fredoka { font-family: 'Fredoka', sans-serif; }
+@theme {
+  --color-maro-primary: #FF9B9B;
+  --color-maro-secondary: #FFD28F;
+  --color-maro-accent: #C3E2C2;
+  --color-maro-bg: #FDF7E4;
+  --color-maro-text: #4A4A4A;
+  --font-fredoka: "Fredoka", sans-serif;
+  --font-nunito: "Nunito", sans-serif;
 }
 
-@layer utilities {
-  .animate-bounce-subtle {
-    animation: bounce-subtle 2s ease-in-out infinite;
-  }
-  .animate-popIn {
-    animation: popIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
-  }
-  .perspective { perspective: 1000px; }
-  .transform-style-3d { transform-style: preserve-3d; }
-  .backface-hidden { backface-visibility: hidden; }
-  .rotate-y-180 { transform: rotateY(180deg); }
-  .emoji-shadow {
-    filter: drop-shadow(0 10px 8px rgb(0 0 0 / 0.15));
-  }
-}
-
-@keyframes bounce-subtle {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-5px); }
-}
-
-@keyframes popIn {
-  0% { transform: scale(0.8); opacity: 0; }
-  100% { transform: scale(1); opacity: 1; }
-}
-
-.flashcard-inner {
-  transition: transform 0.6s cubic-bezier(0.4, 0.2, 0.2, 1);
-  transform-style: preserve-3d;
-}
-.flashcard.flipped .flashcard-inner {
-  transform: rotateY(180deg);
+body {
+  font-family: var(--font-nunito);
+  background-color: var(--color-maro-bg);
+  color: var(--color-maro-text);
+  margin: 0;
+  padding: 0;
 }
