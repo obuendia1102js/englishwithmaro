@@ -4,7 +4,8 @@ export const useProgressStore = defineStore('progress', {
   state: () => ({
     score: parseInt(localStorage.getItem('maro_score') || '0'),
     streak: parseInt(localStorage.getItem('maro_streak') || '0'),
-    completedTopics: JSON.parse(localStorage.getItem('maro_completed_topics') || '[]')
+    completedTopics: JSON.parse(localStorage.getItem('maro_completed_topics') || '[]'),
+    errorCount: 0 // Volatile state to trigger error sounds
   }),
   actions: {
     addScore(points) {
@@ -17,6 +18,7 @@ export const useProgressStore = defineStore('progress', {
     },
     resetStreak() {
       this.streak = 0
+      this.errorCount++
       this.saveState()
     },
     completeTopic(topicId) {
