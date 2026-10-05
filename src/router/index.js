@@ -16,6 +16,11 @@ const router = createRouter({
       component: () => import('../views/LevelView.vue')
     },
     {
+      path: '/topic/animals',
+      name: 'topic-animals',
+      component: () => import('../views/AnimalsView.vue')
+    },
+    {
       path: '/topic/pronouns',
       name: 'topic-pronouns',
       component: () => import('../views/PronounsView.vue')
