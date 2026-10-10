@@ -13,7 +13,7 @@
       <div class="text-8xl mb-6 emoji-shadow animate-bounce-subtle">🏆</div>
       <h1 class="text-4xl font-fredoka font-black text-slate-800 mb-4">El Gran Reto de Manuel</h1>
       <p class="text-slate-500 font-medium text-lg max-w-xl mx-auto mb-10">
-        ¡Demuestra lo inteligente que eres! Este examen tiene 10 preguntas secretas de animales, colores, comida, objetos y pronombres. ¿Estás listo?
+        ¡Subimos la dificultad! Este examen tiene 20 preguntas secretas. ¡Y cuidado, en algunas de ellas tendrás que escribir la respuesta correcta! ¿Aceptas el reto?
       </p>
       
       <button @click="startExam" class="bg-gradient-to-r from-purple-500 to-indigo-600 hover:from-purple-600 hover:to-indigo-700 text-white px-10 py-4 rounded-2xl font-bold text-xl shadow-xl shadow-purple-500/30 transition-all hover:scale-105 active:scale-95 flex items-center justify-center gap-3 mx-auto">
@@ -45,7 +45,30 @@
           <p class="text-center text-slate-400 text-sm font-semibold mb-2">Pista: "{{ currentQuestion.translation }}"</p>
           <h3 class="text-center text-2xl sm:text-3xl font-fredoka font-bold text-slate-800 mb-8" v-html="formattedSentence"></h3>
           
-          <div class="grid grid-cols-2 gap-4">
+          <!-- Escribir respuesta -->
+          <div v-if="currentQuestion.isTyping" class="flex flex-col items-center gap-4">
+            <input 
+              v-model="textAnswer" 
+              type="text" 
+              :disabled="hasAnswered"
+              @keyup.enter="checkTextAnswer"
+              placeholder="Escribe en inglés..." 
+              class="w-full max-w-sm text-center font-fredoka font-bold text-2xl px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-purple-500 focus:ring-4 focus:ring-purple-500/20 outline-none transition-all"
+              :class="{
+                'bg-success/10 border-success text-success': hasAnswered && isTextAnswerCorrect,
+                'bg-danger/10 border-danger text-danger': hasAnswered && !isTextAnswerCorrect
+              }"
+            >
+            <button v-if="!hasAnswered" @click="checkTextAnswer" class="bg-indigo-600 hover:bg-indigo-700 text-white px-8 py-3 rounded-xl font-bold transition-all shadow-lg shadow-indigo-600/30">
+              Comprobar
+            </button>
+            <div v-if="hasAnswered && !isTextAnswerCorrect" class="text-danger font-bold">
+              Respuesta correcta: {{ currentQuestion.correct }}
+            </div>
+          </div>
+
+          <!-- Opciones múltiples -->
+          <div v-else class="grid grid-cols-2 gap-4">
             <button v-for="opt in currentOptions" :key="opt" @click="selectOption(opt)" 
               :disabled="hasAnswered"
               :class="getOptionClass(opt)"
@@ -71,7 +94,7 @@
       </div>
       
       <h2 class="text-4xl sm:text-5xl font-fredoka font-black text-slate-800 mb-2">¡Felicidades Manuel!</h2>
-      <p class="text-xl text-slate-600 font-medium">¡Has completado el Nivel A1!</p>
+      <p class="text-xl text-slate-600 font-medium">¡Has completado el Gran Reto!</p>
       
       <div class="bg-white border-2 border-purple-100 rounded-3xl p-6 shadow-xl shadow-purple-500/10 my-8">
         <p class="text-slate-500 mb-2 font-bold uppercase tracking-wider text-sm">Tu Puntuación del Examen</p>
@@ -99,23 +122,39 @@ const correctAnswers = ref(0)
 const examDatabase = [
   // Animals
   { emoji: "🐶", sentence: "The ___ is barking.", translation: "El perro está ladrando.", options: ["Cat", "Dog", "Cow", "Pig"], correct: "Dog" },
+  { emoji: "🐱", sentence: "My ___ likes to sleep.", translation: "A mi gato le gusta dormir.", options: ["Horse", "Fish", "Cat", "Bird"], correct: "Cat" },
   { emoji: "🐮", sentence: "The ___ gives milk.", translation: "La vaca da leche.", options: ["Dog", "Cow", "Duck", "Rooster"], correct: "Cow" },
+  { emoji: "🐷", sentence: "Look at the pink ___.", translation: "Mira el cerdo rosado.", options: ["Pig", "Sheep", "Goat", "Horse"], correct: "Pig" },
+  { emoji: "🐴", sentence: "I ride a ___.", translation: "Yo monto un caballo.", options: ["Cow", "Rabbit", "Horse", "Chicken"], correct: "Horse" },
   { emoji: "🦁", sentence: "The ___ roars loudly.", translation: "El león ruge fuerte.", options: ["Lion", "Tiger", "Cat", "Monkey"], correct: "Lion" },
   { emoji: "🐘", sentence: "The ___ has a long trunk.", translation: "El elefante tiene una trompa larga.", options: ["Hippo", "Rhino", "Elephant", "Giraffe"], correct: "Elephant" },
+  { emoji: "🐵", sentence: "The ___ loves bananas.", translation: "El mono ama los plátanos.", options: ["Monkey", "Gorilla", "Bear", "Dog"], correct: "Monkey" },
+  
   // Food & Colors
   { emoji: "🔴", sentence: "The apple is ___.", translation: "La manzana es roja.", options: ["Blue", "Red", "Green", "Yellow"], correct: "Red" },
   { emoji: "🔵", sentence: "The sky is ___.", translation: "El cielo es azul.", options: ["Red", "Pink", "Blue", "Black"], correct: "Blue" },
+  { emoji: "🟡", sentence: "The sun is ___.", translation: "El sol es amarillo.", options: ["White", "Orange", "Green", "Yellow"], correct: "Yellow" },
+  { emoji: "🟢", sentence: "The grass is ___.", translation: "El pasto es verde.", options: ["Brown", "Green", "Purple", "Blue"], correct: "Green" },
+  { emoji: "🍎", sentence: "I eat an ___.", translation: "Yo como una manzana.", options: ["Apple", "Orange", "Pizza", "Water"], correct: "Apple" },
   { emoji: "🍌", sentence: "Monkeys love ___.", translation: "A los monos les encantan los plátanos.", options: ["Apple", "Carrot", "Banana", "Cheese"], correct: "Banana" },
   { emoji: "🍕", sentence: "I want a slice of ___.", translation: "Quiero una rebanada de pizza.", options: ["Pizza", "Water", "Egg", "Rice"], correct: "Pizza" },
+  { emoji: "🥛", sentence: "The cow gives ___.", translation: "La vaca da leche.", options: ["Juice", "Water", "Milk", "Cheese"], correct: "Milk" },
+  
   // Objects
   { emoji: "🎒", sentence: "I put my books in my ___.", translation: "Pongo mis libros en mi mochila.", options: ["Desk", "Backpack", "Ruler", "Bed"], correct: "Backpack" },
   { emoji: "📖", sentence: "I like to read a ___.", translation: "Me gusta leer un libro.", options: ["Book", "Tree", "TV", "Pencil"], correct: "Book" },
+  { emoji: "✏️", sentence: "I write with a ___.", translation: "Yo escribo con un lápiz.", options: ["Pen", "Ruler", "Pencil", "Lamp"], correct: "Pencil" },
   { emoji: "🚗", sentence: "My dad drives a ___.", translation: "Mi papá maneja un auto.", options: ["Car", "Bus", "Bicycle", "Street"], correct: "Car" },
   { emoji: "🛏️", sentence: "I sleep in my ___.", translation: "Duermo en mi cama.", options: ["Sofa", "Bed", "Car", "Desk"], correct: "Bed" },
+  { emoji: "📺", sentence: "I watch ___.", translation: "Yo veo televisión.", options: ["Clock", "TV", "Window", "Door"], correct: "TV" },
+  
   // Pronouns
   { emoji: "🙋🏽‍♂️", sentence: "___ am a student.", translation: "Yo soy un estudiante.", options: ["He", "I", "You", "We"], correct: "I" },
   { emoji: "👦🏽", sentence: "___ is playing soccer.", translation: "Él está jugando fútbol.", options: ["She", "We", "He", "They"], correct: "He" },
-  { emoji: "👨‍👩‍👧‍👦", sentence: "___ are a family.", translation: "Ellos son una familia.", options: ["They", "I", "He", "She"], correct: "They" }
+  { emoji: "👨‍👩‍👧‍👦", sentence: "___ are a family.", translation: "Ellos son una familia.", options: ["They", "I", "He", "She"], correct: "They" },
+  { emoji: "👧🏽", sentence: "___ is my sister.", translation: "Ella es mi hermana.", options: ["He", "She", "I", "We"], correct: "She" },
+  { emoji: "🐶", sentence: "___ is a good dog.", translation: "Él (animal) es un buen perro.", options: ["He", "She", "It", "They"], correct: "It" },
+  { emoji: "👫", sentence: "___ are best friends.", translation: "Nosotros somos mejores amigos.", options: ["They", "We", "I", "You"], correct: "We" }
 ]
 
 const speak = (text) => {
@@ -132,6 +171,8 @@ const quizQuestions = ref([])
 const qIndex = ref(0)
 const hasAnswered = ref(false)
 const selectedOption = ref(null)
+const textAnswer = ref("")
+const isTextAnswerCorrect = ref(false)
 
 const currentQuestion = computed(() => quizQuestions.value[qIndex.value])
 const currentOptions = computed(() => currentQuestion.value ? [...currentQuestion.value.options].sort(() => Math.random() - 0.5) : [])
@@ -139,23 +180,69 @@ const progressPercent = computed(() => (qIndex.value / quizQuestions.value.lengt
 
 const formattedSentence = computed(() => {
   if (!currentQuestion.value) return ''
-  if (!hasAnswered.value) return currentQuestion.value.sentence
   
-  if (selectedOption.value === currentQuestion.value.correct) {
-    return currentQuestion.value.sentence.replace('___', `<span class="text-success underline">${currentQuestion.value.correct}</span>`)
+  if (currentQuestion.value.isTyping) {
+    if (!hasAnswered.value) return currentQuestion.value.sentence
+    if (isTextAnswerCorrect.value) {
+      return currentQuestion.value.sentence.replace('___', `<span class="text-success underline">${currentQuestion.value.correct}</span>`)
+    } else {
+      return currentQuestion.value.sentence.replace('___', `<span class="text-danger line-through">${textAnswer.value || '?'}</span> <span class="text-success underline">${currentQuestion.value.correct}</span>`)
+    }
   } else {
-    return currentQuestion.value.sentence.replace('___', `<span class="text-danger line-through">${selectedOption.value}</span> <span class="text-success underline">${currentQuestion.value.correct}</span>`)
+    if (!hasAnswered.value) return currentQuestion.value.sentence
+    if (selectedOption.value === currentQuestion.value.correct) {
+      return currentQuestion.value.sentence.replace('___', `<span class="text-success underline">${currentQuestion.value.correct}</span>`)
+    } else {
+      return currentQuestion.value.sentence.replace('___', `<span class="text-danger line-through">${selectedOption.value}</span> <span class="text-success underline">${currentQuestion.value.correct}</span>`)
+    }
   }
 })
 
 const startExam = () => {
-  quizQuestions.value = [...examDatabase].sort(() => Math.random() - 0.5).slice(0, 10) // 10 random questions
+  // Shuffle all questions
+  const shuffledDb = [...examDatabase].sort(() => Math.random() - 0.5)
+  // Take 20
+  const selected = shuffledDb.slice(0, 20)
+  
+  // Pick 5 to be typing questions
+  const indices = Array.from({length: 20}, (_, i) => i)
+  indices.sort(() => Math.random() - 0.5)
+  const typingIndices = indices.slice(0, 5)
+  
+  quizQuestions.value = selected.map((q, i) => {
+    return {
+      ...q,
+      isTyping: typingIndices.includes(i)
+    }
+  })
+  
   qIndex.value = 0
   score.value = 0
   correctAnswers.value = 0
   hasAnswered.value = false
   selectedOption.value = null
+  textAnswer.value = ""
   currentTab.value = 'quiz'
+}
+
+const checkTextAnswer = () => {
+  if (hasAnswered.value || !textAnswer.value.trim()) return
+  hasAnswered.value = true
+  
+  const userText = textAnswer.value.trim().toLowerCase()
+  const correctText = currentQuestion.value.correct.toLowerCase()
+  
+  if (userText === correctText) {
+    isTextAnswerCorrect.value = true
+    score.value += 100
+    correctAnswers.value++
+    progressStore.addScore(100)
+    progressStore.updateStreak(progressStore.streak + 1)
+    if(window.confetti) confetti({ particleCount: 30, spread: 50, origin: { y: 0.8 }, colors: ['#9333ea', '#4f46e5', '#fcd34d'] })
+  } else {
+    isTextAnswerCorrect.value = false
+    progressStore.resetStreak()
+  }
 }
 
 const selectOption = (opt) => {
@@ -199,6 +286,8 @@ const nextQuestion = () => {
     qIndex.value++
     hasAnswered.value = false
     selectedOption.value = null
+    textAnswer.value = ""
+    isTextAnswerCorrect.value = false
   } else {
     currentTab.value = 'results'
     if(window.confetti) {
