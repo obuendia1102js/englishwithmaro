@@ -16,6 +16,11 @@ const router = createRouter({
       component: () => import('../views/LevelView.vue')
     },
     {
+      path: '/exam/:levelId',
+      name: 'exam',
+      component: () => import('../views/ExamView.vue')
+    },
+    {
       path: '/topic/animals',
       name: 'topic-animals',
       component: () => import('../views/AnimalsView.vue')

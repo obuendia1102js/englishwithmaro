@@ -66,7 +66,24 @@
           Practicar <i class="fa-solid fa-arrow-right"></i>
         </div>
       </router-link>
-      
+    </div>
+
+    <!-- Examen Final -->
+    <div class="mt-10">
+      <router-link to="/exam/a1" class="group relative overflow-hidden rounded-3xl bg-gradient-to-r from-indigo-500 to-purple-600 border-none p-8 text-left transition-all hover:shadow-2xl hover:shadow-purple-500/30 hover:-translate-y-1 flex flex-col sm:flex-row items-center sm:items-start gap-6 w-full text-white">
+        <div class="w-20 h-20 rounded-full bg-white/20 flex items-center justify-center text-4xl shrink-0 group-hover:scale-110 transition-transform">
+          🏆
+        </div>
+        <div class="flex-grow text-center sm:text-left">
+          <h3 class="font-fredoka text-2xl font-bold mb-2">Examen Final: Nivel A1</h3>
+          <p class="font-medium text-indigo-100 mb-4 max-w-xl">
+            ¡Demuestra todo lo que aprendiste sobre Animales, Comida, Colores, Objetos y Pronombres! 
+          </p>
+          <div class="inline-flex items-center gap-2 bg-white text-purple-600 font-bold px-6 py-3 rounded-xl shadow-lg group-hover:bg-purple-50 transition-colors">
+            ¡Comenzar el Gran Reto! <i class="fa-solid fa-play"></i>
+          </div>
+        </div>
+      </router-link>
     </div>
   </div>
 </template>
