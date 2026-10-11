@@ -39,6 +39,11 @@ const router = createRouter({
       path: '/topic/pronouns',
       name: 'topic-pronouns',
       component: () => import('../views/PronounsView.vue')
+    },
+    {
+      path: '/topic/reading-dinosaurs',
+      name: 'topic-reading-dinosaurs',
+      component: () => import('../views/DinosaurReadingView.vue')
     }
   ]
 })

@@ -9,7 +9,7 @@
       </h2>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 gap-6 w-full">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full">
       
       <!-- Tema 1: Animales -->
       <router-link to="/topic/animals" class="group relative overflow-hidden rounded-3xl bg-white border-2 border-slate-100 hover:border-emerald-500 p-6 text-left transition-all hover:shadow-2xl hover:shadow-emerald-500/20 hover:-translate-y-1 flex flex-col items-start gap-4">
@@ -64,6 +64,20 @@
         </div>
         <div class="font-bold text-primary text-sm flex items-center gap-2 group-hover:translate-x-1 transition-transform mt-auto">
           Practicar <i class="fa-solid fa-arrow-right"></i>
+        </div>
+      </router-link>
+
+      <!-- Tema 5: Lectura Dinosaurios -->
+      <router-link to="/topic/reading-dinosaurs" class="group relative overflow-hidden rounded-3xl bg-white border-2 border-slate-100 hover:border-teal-500 p-6 text-left transition-all hover:shadow-2xl hover:shadow-teal-500/20 hover:-translate-y-1 flex flex-col items-start gap-4">
+        <div class="w-16 h-16 rounded-2xl bg-teal-100 text-teal-600 flex items-center justify-center text-3xl shrink-0 group-hover:scale-110 transition-transform">
+          🦖
+        </div>
+        <div class="flex-grow">
+          <h3 class="font-fredoka text-xl font-bold text-slate-800 mb-1">5. Lectura: Aventura Dinosaurio</h3>
+          <p class="text-slate-500 font-medium text-sm mb-3">¡Lee una historia genial sobre Manuel y su amigo T-Rex!</p>
+        </div>
+        <div class="font-bold text-teal-600 text-sm flex items-center gap-2 group-hover:translate-x-1 transition-transform mt-auto">
+          Leer y Cuestionario <i class="fa-solid fa-arrow-right"></i>
         </div>
       </router-link>
     </div>
