@@ -42,8 +42,12 @@ const router = createRouter({
     },
     {
       path: '/topic/reading-dinosaurs',
-      name: 'topic-reading-dinosaurs',
-      component: () => import('../views/DinosaurReadingView.vue')
+      redirect: '/reading/toby-dinosaur'
+    },
+    {
+      path: '/reading/:storyId',
+      name: 'reading-story',
+      component: () => import('../views/StoryReadingView.vue')
     }
   ]
 })
